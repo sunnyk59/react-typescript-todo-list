@@ -1,14 +1,18 @@
 import React from 'react'
 import TodoCard from './TodoCard'
 
-export default function TodoList() {
+interface ToDoListProps {
+    toDos: string[]
+}
 
-    let randomToDos: string[] = ['Clean Room!', 'Find Job!'];
+export default function TodoList(props: ToDoListProps) {
 
+    const { toDos } = props;
+ 
     return (
         <ul className='main'>
             {
-                randomToDos.map((todo, index) => {
+                toDos.map((todo, index) => {
                     return (
                         <TodoCard key={index} toDo={todo} ></TodoCard>
                     )
