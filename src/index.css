@@ -103,8 +103,7 @@
   }
 
   .tasksCount {
-    width: 50px;
-    cursor: none;
+    width: 50px; 
   } 
 
   @media (min-width: 640px) {
