@@ -8,7 +8,8 @@ export default function App() {
   const [toDos, setToDos] = useState<string[]>([]);
  
   function handleAddToDos(newTodo: string) : void {
-    setToDos((prevToDos) => [...prevToDos, newTodo]);
+    const newToDos = [...toDos, newTodo];
+    setToDos(newToDos);
   }
 
 
