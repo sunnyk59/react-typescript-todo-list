@@ -1,10 +1,12 @@
 import React from 'react'
 import TodoCard from './TodoCard'
+import { Todo } from '../models/Todo';
 
 interface ToDoListProps {
-    toDos: string[];
+    toDos: Todo[];
     handleDelete: (index: number) => void;
     handleEdit: (index: number) => void;
+    handleDone: (index: number) => void;
 }
 
 export default function TodoList(props: ToDoListProps) {
@@ -14,9 +16,9 @@ export default function TodoList(props: ToDoListProps) {
     return (
         <ul className='main'>
             {
-                toDos.map((todo, index) => {
+                toDos.map((todo) => {
                     return (
-                        <TodoCard key={index} index={index} toDo={todo} {...props} ></TodoCard>
+                        <TodoCard key={todo.id} index={todo.id} toDo={todo} {...props} ></TodoCard>
                     )
                 })
             }

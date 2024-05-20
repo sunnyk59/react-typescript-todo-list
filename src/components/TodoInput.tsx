@@ -1,28 +1,34 @@
-import React, { useState } from 'react'
+import React, { RefObject, useState } from 'react'
 
 interface TodoInputProps {
-    handleAddToDos: (newTodo: string) => void
-    setToDoValue: (value: string) => void
-    toDoValue: string
+    toDoValue: string;
+    setToDoValue: (value: string) => void;
+    handleAddToDos: (newTodo: string) => void;
+    inputRef: RefObject<HTMLInputElement>;
 }
 
 export default function TodoInput(props: TodoInputProps) {
 
-    const { handleAddToDos, toDoValue, setToDoValue } = props
+    const { toDoValue, setToDoValue, handleAddToDos, inputRef } = props
 
 
     return (
         <header>
-            <button id='tasksCount'>0</button>
 
-            <input placeholder='Enter Task!?' type="text" id='todoInput'
-                value={toDoValue} onChange={(e) => setToDoValue(e.target.value)} />
+            <input placeholder='Enter Task!?'
+                type="text"
+                id='todoInput'
+                value={toDoValue}
+                onChange={(e) => setToDoValue(e.target.value)}
+                ref={inputRef}
+            />
 
-            <button onClick={
-                () => {
-                    handleAddToDos(toDoValue);
-                    setToDoValue('');
-                }}>Add</button>
+            <button onClick={() => {
+                handleAddToDos(toDoValue);
+                setToDoValue('');
+                inputRef.current?.focus();
+            }}>Add</button>
+
         </header>
     )
 }

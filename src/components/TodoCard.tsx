@@ -1,21 +1,23 @@
 import React from 'react'
+import { Todo } from '../models/Todo'; 
 
 
 interface TodoCardProps {
   index: number;
-  toDo: string;
+  toDo: Todo;
   handleDelete: (index: number) => void
   handleEdit: (index: number) => void
+  handleDone: (index: number) => void
 }
 
 export default function TodoCard(props: TodoCardProps) {
 
-  const { index, toDo, handleDelete, handleEdit } = props
-
+  const { index, toDo, handleDelete, handleEdit, handleDone } = props
+  
   return (
     <li className='todoItem'>
 
-      <p>{toDo}</p>
+      <p>{toDo.toDo}</p>
 
       <div className='actionsContainer'>
 
@@ -25,7 +27,11 @@ export default function TodoCard(props: TodoCardProps) {
 
         <button onClick={() => handleDelete(index)}>
           <i className='fa-solid fa-trash' ></i>
-        </button> 
+        </button>
+
+        <button onClick={() => handleDone(index)}>
+          <i className='fa-solid fa-check' ></i>
+        </button>
 
       </div>
 
