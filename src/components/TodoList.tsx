@@ -1,4 +1,3 @@
-import React from 'react'
 import TodoCard from './TodoCard'
 import { Todo } from '../models/Todo';
 
@@ -13,15 +12,38 @@ export default function TodoList(props: ToDoListProps) {
 
     const { toDos } = props;
 
+    const activeTasks = toDos.filter((todo) => todo.isDone === false);
+    const completedTasks = toDos.filter((todo) => todo.isDone === true);
+
     return (
-        <ul className='main'>
-            {
-                toDos.map((todo) => {
-                    return (
-                        <TodoCard key={todo.id} index={todo.id} toDo={todo} {...props} ></TodoCard>
-                    )
-                })
-            }
-        </ul>
+
+        <div className='lists-container'>
+            <div className='main' >
+                <h2 className='heading'>Active Tasks</h2>
+                <ul>
+                    {
+                        activeTasks.map((todo) => {
+                            return (
+                                <TodoCard key={todo.id} index={todo.id} toDo={todo} {...props}></TodoCard>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+
+            <div className='main'>
+                <h2 className='heading'>Completed Tasks</h2>
+                <ul>
+                    {
+                        completedTasks.map((todo) => {
+                            return (
+                                <TodoCard key={todo.id} index={todo.id} toDo={todo} {...props}></TodoCard>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
+        </div>
+
     )
 }

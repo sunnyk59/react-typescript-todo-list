@@ -1,5 +1,4 @@
-import React from 'react'
-import { Todo } from '../models/Todo'; 
+import { Todo } from '../models/Todo';
 
 
 interface TodoCardProps {
@@ -13,11 +12,11 @@ interface TodoCardProps {
 export default function TodoCard(props: TodoCardProps) {
 
   const { index, toDo, handleDelete, handleEdit, handleDone } = props
-  
+
   return (
     <li className='todoItem'>
 
-      <p>{toDo.toDo}</p>
+      <p className={toDo.isDone ? 'strikeThrough' : ''}> {toDo.toDo} </p>
 
       <div className='actionsContainer'>
 

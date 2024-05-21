@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from 'react'
+import { RefObject } from 'react'
 
 interface TodoInputProps {
     toDoValue: string;
